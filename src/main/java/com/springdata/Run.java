@@ -13,8 +13,8 @@ public class Run {
         System.out.println(studentDAO.getStatistica());
        // studentDAO.insertAll(new Student("Genia",945,4,new Facultet("TK","EVM")));
         System.out.println(studentDAO.getStudentById(6));
-        //studentDAO.insertStudent(new Student("Lena",955,5,new Facultet("TK","KIT")));
-        System.out.println(studentDAO.getListSudentByName("Lena"));
+        studentDAO.insertStudent(new Student("Vera",945,4,new Facultet("TK","EVM")));
+        System.out.println(studentDAO.getListSudentByName("Vera"));
 
     }
 }

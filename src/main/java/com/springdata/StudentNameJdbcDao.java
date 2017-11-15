@@ -32,7 +32,7 @@ public class StudentNameJdbcDao implements StudentDAO {
         this.insertStudent=new SimpleJdbcInsert(dataSource).withTableName("student").usingColumns("name","grupa","ocenka");
         this.jdbcTemplate=new NamedParameterJdbcTemplate(dataSource);
     }
-    @Transactional
+
     public void insertAll(Student student) {
         KeyHolder keyHolder=new GeneratedKeyHolder();
         String sqlFacultet="insert into facultet (facultetname,kafedraname) values (:facultetname,:kafedraname)";
