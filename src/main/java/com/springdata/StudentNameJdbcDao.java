@@ -29,10 +29,10 @@ public class StudentNameJdbcDao implements StudentDAO {
     public NamedParameterJdbcTemplate jdbcTemplate;
     @Autowired
     public void setDataSource (DataSource dataSource){
-        this.insertStudent=new SimpleJdbcInsert(dataSource).withTableName("student").usingColumns("name","grupa","ocenka");
+        this.insertStudent=new SimpleJdbcInsert(dataSource).withTableName("student").usingColumns("name","grupa","ocenka","facultetid");
         this.jdbcTemplate=new NamedParameterJdbcTemplate(dataSource);
     }
-
+    // Add new student and new facultet
     public void insertAll(Student student) {
         KeyHolder keyHolder=new GeneratedKeyHolder();
         String sqlFacultet="insert into facultet (facultetname,kafedraname) values (:facultetname,:kafedraname)";
@@ -47,11 +47,12 @@ public class StudentNameJdbcDao implements StudentDAO {
         params.addValue("name",student.getName());
         params.addValue("grupa",student.getGrupa());
         params.addValue("ocenka",student.getOcenka());
-        params.addValue("facultetid1",facultetId);
+        params.addValue("facultetid",facultetId);
         jdbcTemplate.update(sqlStudent,params);
 
 
     }
+    // Add new student and new facultet
     @Transactional (propagation = Propagation.REQUIRED)
     public void insertStudent(Student student) {
         String sqlStudent="insert into student (name,grupa,ocenka,facultetid) values (:name,:grupa,:ocenka,:facultetid)";
@@ -64,6 +65,7 @@ public class StudentNameJdbcDao implements StudentDAO {
         jdbcTemplate.update(sqlStudent,params);
 
     }
+    // Add new facultet
     @Transactional(propagation = Propagation.REQUIRED)
     public int insertFacultet(Facultet facultet) {
         KeyHolder keyHolder=new GeneratedKeyHolder();
@@ -74,12 +76,14 @@ public class StudentNameJdbcDao implements StudentDAO {
         jdbcTemplate.update(sqlFacultet,params,keyHolder);
         return keyHolder.getKey().intValue();
     }
-
+    // Add new student
+    @Transactional(propagation = Propagation.REQUIRED)
     public int newInsert(Student student) {
         MapSqlParameterSource params=new MapSqlParameterSource();
         params.addValue("name",student.getName());
         params.addValue("grupa",student.getGrupa());
         params.addValue("ocenka",student.getOcenka());
+        params.addValue("facultetid",student.getFacultetId());
         return insertStudent.execute(params);
     }
 

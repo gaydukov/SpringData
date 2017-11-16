@@ -11,6 +11,13 @@ public class Student {
     public int facultetId;
     public Facultet facultet;
 
+    public Student(String name, int grupa, int ocenka, int facultetId) {
+        this.name = name;
+        this.grupa = grupa;
+        this.ocenka = ocenka;
+        this.facultetId = facultetId;
+    }
+
     public Student(String name, int grupa, int ocenka, Facultet facultet) {
         this.name = name;
         this.grupa = grupa;
@@ -78,5 +85,11 @@ public class Student {
         this.facultet = facultet;
     }
 
+    public int getFacultetId() {
+        return facultetId;
+    }
 
+    public void setFacultetId(int facultetId) {
+        this.facultetId = facultetId;
+    }
 }

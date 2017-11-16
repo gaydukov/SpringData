@@ -11,10 +11,11 @@ public class Run {
         ApplicationContext ctx=new ClassPathXmlApplicationContext("ApplicationContext");
         StudentDAO studentDAO=(StudentDAO)ctx.getBean("studentNameJdbaDao");
         System.out.println(studentDAO.getStatistica());
-        studentDAO.insertAll(new Student("Tania",945,3,new Facultet("TK","EVM")));
-        System.out.println(studentDAO.getStudentById(6));
+        //studentDAO.insertAll(new Student("Nina",955,2,new Facultet("TK","EK")));
+        //System.out.println(studentDAO.getStudentById(6));
         //studentDAO.insertStudent(new Student("Vera",945,4,new Facultet("TK","EVM")));
-        System.out.println(studentDAO.getListSudentByName("Vera"));
+        //System.out.println(studentDAO.getListSudentByName("Vera"));
+        studentDAO.newInsert(new Student("Oleg",945,3,1));
 
     }
 }

@@ -16,7 +16,7 @@
 
     <aop:aspectj-autoproxy/>
     <context:component-scan base-package="com.springdata"/>
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 
     <bean id="datasours" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
