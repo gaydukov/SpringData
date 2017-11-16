@@ -11,9 +11,9 @@ public class Run {
         ApplicationContext ctx=new ClassPathXmlApplicationContext("ApplicationContext");
         StudentDAO studentDAO=(StudentDAO)ctx.getBean("studentNameJdbaDao");
         System.out.println(studentDAO.getStatistica());
-       // studentDAO.insertAll(new Student("Genia",945,4,new Facultet("TK","EVM")));
+        studentDAO.insertAll(new Student("Tania",945,3,new Facultet("TK","EVM")));
         System.out.println(studentDAO.getStudentById(6));
-        studentDAO.insertStudent(new Student("Vera",945,4,new Facultet("TK","EVM")));
+        //studentDAO.insertStudent(new Student("Vera",945,4,new Facultet("TK","EVM")));
         System.out.println(studentDAO.getListSudentByName("Vera"));
 
     }

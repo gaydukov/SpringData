@@ -33,6 +33,15 @@
           <property name="dataSource" ref="datasours"/>
     </bean>
 
+    <tx:advice id="dviceTransaction" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="insertAll" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:advisor pointcut="execution(* com.springdata.StudentNameJdbcDao.*(..))" advice-ref="dviceTransaction"></aop:advisor>
+    </aop:config>
 
 
 

@@ -47,7 +47,7 @@ public class StudentNameJdbcDao implements StudentDAO {
         params.addValue("name",student.getName());
         params.addValue("grupa",student.getGrupa());
         params.addValue("ocenka",student.getOcenka());
-        params.addValue("facultetid",facultetId);
+        params.addValue("facultetid1",facultetId);
         jdbcTemplate.update(sqlStudent,params);
 
 
